@@ -1,0 +1,49 @@
+﻿@model List<Commande>
+
+@*PAR IA*@
+
+@{
+    var peluchesDict = ViewData["Peluches"] as Dictionary<int, Peluche>;
+}
+
+<p>
+    <a class="btn btn-secondary mb-3" href="/Home/Index">Retour</a>
+</p>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">
+        Vous n'avez aucune commande pour le moment.
+    </div>
+}
+else
+{
+    foreach (var commande in Model)
+    {
+        <div class="card mb-4">
+            <div class="card-header">
+                Commande n°@commande.Id - <small>@commande.DateCommande.ToString("g")</small>
+            </div>
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                    @foreach (var ligne in commande.Lignes)
+                    {
+                        var pelucheExists = peluchesDict != null && peluchesDict.ContainsKey(ligne.PelucheId);
+                        var peluche = pelucheExists ? peluchesDict[ligne.PelucheId] : null;
+
+                        <li class="list-group-item d-flex align-items-center">
+                            @if (pelucheExists && !string.IsNullOrEmpty(peluche.ImageUrl))
+                            {
+                                <img src="@peluche.ImageUrl" alt="@peluche.Nom" style="width: 80px; height: 80px; object-fit: cover; margin-right: 10px;" />
+                            }
+                            <div>
+                                <strong>@(peluche?.Nom ?? $"Peluche #{ligne.PelucheId}")</strong><br />
+                                Personnalisation : @ligne.NomBrode, Couleur : @ligne.Couleur, Couture : @ligne.TypeCouture
+                            </div>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    }
+}

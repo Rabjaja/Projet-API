@@ -1,0 +1,9 @@
+Quand on arrive sur le site, on est sur la page d'accueil. On peut se connecter, s'inscrire ou naviguer dans la boutique.
+
+On peut naviguer dans la boutique sans être connecté ainsi que voir les détails des produits mais l'on ne peut pas personnaliser les peluches, ajouter au panier ou passer commande sans être connecté.
+
+Une fois connecté, on peut personnaliser les peluches, ajouter au panier et passer commande. On peut aussi consulter ses commandes.
+
+Quant à la partie admin, lorsque l'on se connecte, si le role d'utilisateur est admin, on peut accéder à la page admin. On peut alors gérer les peluches (CRUD) et supprimer les utilisateurs.
+
+Ce site est sécurisé et car les mots de passes sont hachés et on ne peut pas visiter des pages auquelles on n'a pas accès. Par exemple, si l'on essaie d'accéder à la page admin sans être admin, on est redirigé vers la page d'accueil.

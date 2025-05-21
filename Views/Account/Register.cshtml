@@ -1,0 +1,35 @@
+﻿@model PeluShop.ViewModels.RegisterViewModel
+
+@{
+    ViewData["Title"] = "Inscription";
+}
+
+<h2>Inscription</h2>
+
+<form asp-action="Register" method="post">
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+    <div class="mb-3">
+        <label asp-for="Username" class="form-label">Nom d'utilisateur</label>
+        <input asp-for="Username" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Email" class="form-label">Email</label>
+        <input asp-for="Email" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Password" class="form-label">Mot de passe</label>
+        <input asp-for="Password" type="password" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="ConfirmPassword" class="form-label">Confirmation mot de passe</label>
+        <input asp-for="ConfirmPassword" type="password" class="form-control" />
+    </div>
+
+    <a class ="" href="/Account/Login">Vous avez déjà un compte ?</a>
+    <br />
+    <button type="submit" class="btn btn-primary mt-3">S'inscrire</button>
+</form>

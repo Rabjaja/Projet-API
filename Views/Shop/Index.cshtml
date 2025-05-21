@@ -1,0 +1,62 @@
+﻿@using System.Security.Claims
+
+@model List<Peluche>
+
+@{
+    ViewData["Title"] = "Boutique";
+    var panier = ViewBag.Panier as List<LignePanier> ?? new List<LignePanier>();
+}
+
+
+<h1 class="mb-4 mt-4">Nos peluches</h1>
+
+@if (User.Identity.IsAuthenticated)
+{
+    <h4 class="bg-success p-3 rounded">Bonjour @User.Identity.Name</h4>
+
+    @if (panier.Any())
+    {
+        <div class="alert alert-info mb-4">
+            <strong>Panier :</strong> @panier.Count article(s)
+            <ul class="mb-0">
+                @foreach (var item in panier)
+                {
+                    <li>@item.Nom (@item.Couleur - @item.TypeCouture - @item.NomBrode)</li>
+                }
+            </ul>
+        </div>
+
+        <form method="post" asp-action="PasserCommande">
+            <button class="btn btn-warning mt-2">Passer commande</button>
+        </form>
+
+    }
+    else
+    {
+        <div class="alert alert-secondary mb-4">
+            Votre panier est vide
+        </div>
+    }
+    <a href="/Shop/MesCommandes">Mes commandes</a>
+}
+else
+{
+    <p><a href="/Home/Index">Retour</a></p>
+}
+
+<div class="row">
+    @foreach (var peluche in Model)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">@peluche.Nom</h5>
+                    <p class="fw-bold text-success">@peluche.Prix.ToString("0.00") €</p>
+                    <p class="fw-bold text-danger">@peluche.Stock disponible(s)</p>
+                    <a href="/Shop/Customize/@peluche.Id" class="btn btn-primary">Personnaliser</a>
+                    <a href="/Shop/Details/@peluche.Id" class="btn btn-success">Détails</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

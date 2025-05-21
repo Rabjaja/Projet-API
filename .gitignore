@@ -1,0 +1,44 @@
+# Visual Studio / ASP.NET Core
+.vs/
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Dotnet Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Rider IDE
+.idea/
+
+# Resharper
+_ReSharper*/
+*.DotSettings.user
+
+# NuGet
+*.nupkg
+*.snupkg
+*.nuspec
+packages/
+
+# Logs
+*.log
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userprefs
+
+# Others
+*.dbmdl
+
+# Ignore published output
+publish/
+
+# Ignore node_modules if you have some frontend stuff
+node_modules/

@@ -1,0 +1,38 @@
+﻿@model List<Peluche>
+
+<h2>Gestion des peluches</h2>
+
+<a asp-action="AjouterPeluche" class="btn btn-success mb-3">Ajouter une peluche</a>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Description</th>
+            <th>Stock</th>
+            <th>Prix</th>
+            <th>Image</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var p in Model)
+        {
+            <tr>
+                <td>@p.Nom</td>
+                <td>@p.Description</td>
+                <td>@p.Stock</td>
+                <td>@p.Prix €</td>
+                <td><img src="@p.ImageUrl" width="50" height="50" /></td>
+                <td>
+                    <a asp-action="ModifierPeluche" asp-controller="Admin" asp-route-id="@p.Id" class="btn btn-sm btn-warning">Modifier</a>
+                    <a asp-action="SupprimerPeluche" asp-controller="Admin" asp-route-id="@p.Id" class="btn btn-sm btn-danger">Supprimer</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@if (TempData["Erreur"] != null)
+{
+    <div class="alert alert-danger">@TempData["Erreur"]</div>
+}

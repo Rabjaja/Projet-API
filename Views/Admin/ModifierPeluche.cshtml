@@ -1,0 +1,32 @@
+﻿@model Peluche
+
+<h2>Modifier la peluche</h2>
+
+<form asp-action="ModifierPeluche" method="post">
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+    <input type="hidden" asp-for="Id" />
+
+    <div class="mb-3">
+        <label asp-for="Nom" class="form-label"></label>
+        <input asp-for="Nom" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Description" class="form-label"></label>
+        <input asp-for="Description" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Prix" class="form-label"></label>
+        <input asp-for="Prix" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="ImageUrl" class="form-label"></label>
+        <input asp-for="ImageUrl" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Stock" class="form-label"></label>
+        <input asp-for="Stock" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Enregistrer</button>
+    <a asp-action="Peluches" class="btn btn-secondary">Annuler</a>
+</form>

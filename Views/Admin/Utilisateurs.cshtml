@@ -1,0 +1,25 @@
+﻿@model List<User>
+
+<h2>Gestion des utilisateurs</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nom d'utilisateur</th>
+            <th>Email</th>
+            <th>Rôle</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var u in Model)
+        {
+            <tr>
+                <td>@u.Id</td>
+                <td>@u.Username</td>
+                <td>@u.Email</td>
+                <td>@u.Role</td>
+            </tr>
+        }
+    </tbody>
+</table>

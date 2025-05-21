@@ -1,0 +1,33 @@
+﻿@model Peluche
+@*PAGE CREE PAR IA*@
+
+<div class="container my-5">
+    <div class="card shadow-lg border-0 rounded-4 mx-auto" style="max-width: 600px;">
+        <img src="@Model.ImageUrl" class="card-img-top rounded-top-4" alt="@Model.Nom" />
+
+        <div class="card-body">
+            <h2 class="card-title text-center mb-4">@Model.Nom</h2>
+
+            <p class="card-text">
+                <strong>Description :</strong><br />
+                @Model.Description
+            </p>
+
+            <p class="card-text">
+                <strong>Prix :</strong>
+                <span class="text-success fw-bold">@Model.Prix €</span>
+            </p>
+
+            <p class="card-text fw-bold">
+                <strong>Stock :</strong>
+                <span class="badge bg-success" style="font-size: 1rem;">
+                    @Model.Stock disponibles
+                </span>
+            </p>
+
+            <div class="d-flex justify-content-center mt-4">
+                <a href="/Shop/Index" class="btn btn-outline-primary px-4 rounded-pill">← Retour</a>
+            </div>
+        </div>
+    </div>
+</div>

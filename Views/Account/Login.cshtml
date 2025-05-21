@@ -1,0 +1,23 @@
+﻿@model PeluShop.ViewModels.LoginViewModel
+
+@{
+    ViewData["Title"] = "Connexion";
+}
+
+<h2>Connexion</h2>
+
+<form asp-action="Login" method="post">
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" }) @*Pour "ModelState.AddModelError()"*@
+
+    <div class="mb-3">
+        <label asp-for="Username" class="form-label">Nom d'utilisateur</label>
+        <input asp-for="Username" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Password" class="form-label">Mot de passe</label>
+        <input asp-for="Password" type="password" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Se connecter</button>
+</form>

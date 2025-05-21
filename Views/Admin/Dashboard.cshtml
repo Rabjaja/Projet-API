@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="container py-5">
+    <h1 class="display-5 fw-bold mb-4">Tableau de bord administrateur</h1>
+
+    <div class="row mt-4">
+        <div class="col-md-4 mb-3">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Produits</h5>
+                    <p class="card-text">Ajouter, modifier ou supprimer des peluches.</p>
+                    <a href="/Admin/Peluches" class="btn btn-primary">Gérer les produits</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Utilisateurs</h5>
+                    <p class="card-text">Gérer les comptes utilisateurs.</p>
+                    <a href="/Admin/Utilisateurs" class="btn btn-primary">Gérer les utilisateurs</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
