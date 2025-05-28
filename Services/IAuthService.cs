@@ -9,4 +9,5 @@ public interface IAuthService
     Task<User?> AuthenticateAsync(string username, string password);
     Task<ClaimsPrincipal> CreateClaimsPrincipalAsync(User user);
     List<User> GetAllUsers();
+    public bool DeleteUser(int id);
 }

@@ -24,8 +24,8 @@ public class CommandeService : ICommandeService
                   VALUES (@CommandeId, @PelucheId, @NomBrode, @Couleur, @TypeCouture)",
                 new
                 {
-                    CommandeId = commandeId,
-                    PelucheId = ligne.PelucheId,
+                    commandeId,
+                    ligne.PelucheId,
                     ligne.NomBrode,
                     ligne.Couleur,
                     ligne.TypeCouture

@@ -87,5 +87,21 @@ public class AuthService : IAuthService
         var sql = "SELECT * FROM Users";
         return db.Query<User>(sql).ToList();
     }
+    public bool DeleteUser(int id)
+    {
+        using var db = Connection;
+        string role = db.QuerySingle<string>(
+            "SELECT role FROM users WHERE Id = @Id",
+            new { Id = id });
+
+        if (role != "Admin")
+        {
+            var sqlDelete = "DELETE FROM Users WHERE Id = @Id";
+            db.Execute(sqlDelete, new { Id = id });
+            return true;
+        }
+
+        return false;
+    }
 
 }

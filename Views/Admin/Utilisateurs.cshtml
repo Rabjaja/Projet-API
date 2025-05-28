@@ -1,6 +1,7 @@
 ﻿@model List<User>
 
 <h2>Gestion des utilisateurs</h2>
+<p><a href="/Admin/Dashboard">Retour</a></p>
 
 <table class="table table-bordered">
     <thead>
@@ -9,6 +10,7 @@
             <th>Nom d'utilisateur</th>
             <th>Email</th>
             <th>Rôle</th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
@@ -19,7 +21,14 @@
                 <td>@u.Username</td>
                 <td>@u.Email</td>
                 <td>@u.Role</td>
+                <td>
+                    <a asp-action="SupprimerUtilisateur" asp-controller="Admin" asp-route-id="@u.Id" class="btn btn-sm btn-warning">Supprimer</a>
+                </td>
             </tr>
         }
     </tbody>
 </table>
+@if (TempData["Erreur"] != null)
+{
+    <div class="alert alert-danger">@TempData["Erreur"]</div>
+}

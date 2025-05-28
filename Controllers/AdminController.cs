@@ -24,12 +24,20 @@ public class AdminController : Controller
     }
     public IActionResult Peluches()
     {
+        if (!User.Identity.IsAuthenticated || User.IsInRole("User"))
+        {
+            return RedirectToAction("AccessDenied", "Account");
+        }
         var peluches = _pelucheService.GetAll();
         return View(peluches);
     }
 
     public IActionResult Utilisateurs()
     {
+        if (!User.Identity.IsAuthenticated || User.IsInRole("User"))
+        {
+            return RedirectToAction("AccessDenied", "Account");
+        }
         var utilisateurs = _authService.GetAllUsers();
         return View(utilisateurs);
     }
@@ -80,4 +88,13 @@ public class AdminController : Controller
         return RedirectToAction("Peluches");
     }
 
+    [HttpGet]
+    public IActionResult SupprimerUtilisateur(int id)
+    {
+        if (!_authService.DeleteUser(id))
+        {
+            TempData["Erreur"] = "Impossible de supprimer l'utilisateur Admin";
+        }
+        return RedirectToAction("Utilisateurs");
+    }
 }
